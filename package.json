@@ -31,24 +31,26 @@
 		"build": "rspack build",
 		"build:dev": "rspack build -c rspack.dev.config.js --mode=development",
 		"build:args": "arguments-builder build",
-		"dts": "arguments-builder dts"
+		"dts": "arguments-builder dts",
+		"submodule": "git submodule update --remote"
 	},
 	"browserslist": [
 		"iOS >= 15"
 	],
 	"devDependencies": {
-		"@iringo/arguments-builder": "^1.8.2",
-		"@protobuf-ts/plugin": "^2.9.3",
-		"@rspack/cli": "^1.0.14",
-		"@rspack/core": "^1.0.14",
-		"node-polyfill-webpack-plugin": "^4.0.0",
+		"@iringo/arguments-builder": "^1.8.5",
+		"@protobuf-ts/plugin": "^2.11.1",
+		"@rspack/cli": "^1.6.1",
+		"@rspack/core": "^1.6.1",
+		"node-polyfill-webpack-plugin": "^4.1.0",
 		"pako": "^2.1.0",
-		"typescript": "^5.5.4"
+		"typescript": "^5.9.3"
 	},
 	"dependencies": {
-		"@nsnanocat/url": "^1.2.4",
-		"@nsnanocat/util": "^1.7.6",
-		"@protobuf-ts/runtime": "^2.9.3",
-		"@protobuf-ts/runtime-rpc": "^2.9.3"
+		"@nsnanocat/grpc": "^1.0.0",
+		"@nsnanocat/url": "^1.2.5",
+		"@nsnanocat/util": "^1.8.10",
+		"@protobuf-ts/runtime": "^2.11.1",
+		"@protobuf-ts/runtime-rpc": "^2.11.1"
 	}
 }
