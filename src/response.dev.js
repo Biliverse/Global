@@ -134,7 +134,8 @@ Console.info(`FORMAT: ${FORMAT}`);
 						}
 						case "/pgc/view/web/season": // 番剧-内容-web
 						case "/pgc/view/pc/season": // 番剧-内容-pc
-						case "/pgc/view/web/ep/list": { // 番剧-剧集列表-web
+						case "/pgc/view/web/ep/list": {
+							// 番剧-剧集列表-web
 							const result = body.result;
 							infoGroup.seasonTitle = result.season_title ?? infoGroup.seasonTitle;
 							infoGroup.seasonId = result.season_id ?? infoGroup.seasonId;
@@ -201,18 +202,25 @@ Console.info(`FORMAT: ${FORMAT}`);
 											switch (body?.supplement?.typeUrl) {
 												case "type.googleapis.com/bilibili.app.viewunite.pgcanymodel.ViewPgcAny": {
 													infoGroup.type = "PGC";
-													// 先处理 tab
+													// 先处理 arc.right
+													if (body?.arc)
+														body.arc.right = {
+															onlyVipDownload: false,
+															noReprint: false,
+															download: true,
+														};
+													// 再处理 tab
 													body.tab.tabModule = body.tab.tabModule.map(tabModule => {
 														switch (tabModule?.tabType) {
 															case 1: // introduction
 																// 解锁剧集信息限制
-																tabModule.tab.introduction.modules = setModules(tabModule.tab.introduction.modules)
+																tabModule.tab.introduction.modules = setModules(tabModule.tab.introduction.modules);
 																break;
 															default:
 																break;
 														}
 														return tabModule;
-													})
+													});
 													// 再处理 supplement
 													const PgcBody = ViewPgcAny.fromBinary(body.supplement.value);
 													Console.debug(`PgcBody: ${JSON.stringify(PgcBody, null, 2)}`);
@@ -422,9 +430,11 @@ function setEpisodes(episodes = []) {
  */
 function detectLocales(infoGroup = { seasonTitle: undefined, seasonId: undefined, epId: undefined, mId: undefined, evaluate: undefined }) {
 	Console.log("☑️ Detect Locales", `seasonTitle: ${infoGroup.seasonTitle}`, `seasonId: ${infoGroup.seasonId}`, `epId: ${infoGroup.epId}`, `mId: ${infoGroup.mId}`);
-	if (infoGroup.seasonTitle) infoGroup.locales = detectSeasonTitle(infoGroup.seasonTitle) // 有标题先测标题
+	if (infoGroup.seasonTitle)
+		infoGroup.locales = detectSeasonTitle(infoGroup.seasonTitle); // 有标题先测标题
 	else if (infoGroup.mId) infoGroup.locales = detectMId(infoGroup.mId); // 无标题再测 mId
-	if (infoGroup.locales.length === 0) { // infoGroup.locales 为空再测 evaluate
+	if (infoGroup.locales.length === 0) {
+		// infoGroup.locales 为空再测 evaluate
 		if (infoGroup.seasonTitle && infoGroup.evaluate) infoGroup.locales = detectTraditional(infoGroup.seasonTitle, infoGroup.evaluate);
 	}
 	Console.log("✅ Detect Locales", `locales: ${infoGroup.locales}`);
