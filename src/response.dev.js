@@ -1,4 +1,5 @@
-import { $app, Console, done, gRPC, Lodash as _, Storage } from "@nsnanocat/util";
+import { $app, Console, done, Lodash as _, Storage } from "@nsnanocat/util";
+import gRPC from "@nsnanocat/grpc";
 import { URL } from "@nsnanocat/url";
 import database from "./function/database.mjs";
 import setENV from "./function/setENV.mjs";
