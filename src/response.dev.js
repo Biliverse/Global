@@ -216,6 +216,13 @@ Console.info(`FORMAT: ${FORMAT}`);
 																// 解锁剧集信息限制
 																tabModule.tab.introduction.modules = setModules(tabModule.tab.introduction.modules);
 																break;
+															case 2: // reply
+																// 解锁评论区限制
+																tabModule.tab.reply.control = {
+																	limit: false,
+																	disable: false,
+																};
+																break;
 															default:
 																break;
 														}
