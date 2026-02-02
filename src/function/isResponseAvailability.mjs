@@ -16,28 +16,33 @@ export default function isResponseAvailability(response = {}) {
 		case 200:
 			switch (FORMAT) {
 				case "application/grpc":
-				case "application/grpc+proto":
-					switch (response?.headers?.["Grpc-Message"] ?? response?.headers?.["grpc-message"]) {
+				case "application/grpc+proto": {
+					const GrpcStatus = response?.headers?.["Grpc-Status"] ?? response?.headers?.["grpc-status"];
+					switch (GrpcStatus) {
 						case "0":
 							isAvailable = true;
 							break;
 						case undefined:
-						case "": // 无内容
-							switch (response?.headers?.["content-length"] ?? response?.headers?.["Content-Length"]) {
+						case "": {
+							// 无内容
+							const ContentLength = response?.headers?.["content-length"] ?? response?.headers?.["Content-Length"];
+							switch (ContentLength) {
 								case undefined:
-									isAvailable = true;
+									isAvailable = (response?.body?.byteLength ?? response?.body?.length) > 4096;
 									break;
 								default:
-									if (Number.parseInt(response?.headers?.["content-length"] ?? response?.headers?.["Content-Length"]) < 1400) isAvailable = false;
+									isAvailable = Number.parseInt(ContentLength) > 4096;
 									break;
 							}
 							break;
+						}
 						case "-404":
 						default:
 							isAvailable = false;
 							break;
 					}
 					break;
+				}
 				case "text/json":
 				case "application/json":
 					switch (response?.headers?.["bili-status-code"]) {
