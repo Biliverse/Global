@@ -5,6 +5,7 @@ import database from "./function/database.mjs";
 import setENV from "./function/setENV.mjs";
 import { ViewReply } from "./protobuf/bilibili/app/viewunite/v1/viewunite.js";
 import { ViewPgcAny } from "./protobuf/bilibili/app/viewunite/pgcanymodel.js";
+import fixHeaders from "./function/fixHeaders.mjs";
 /***************** Processing *****************/
 // 解构URL
 const url = new URL($request.url);
@@ -171,6 +172,8 @@ Console.info(`FORMAT: ${FORMAT}`);
 					break;
 				case "application/grpc":
 				case "application/grpc+proto":
+					// headers修复
+					$response.headers = fixHeaders($request.headers, $response.headers);
 					rawBody = gRPC.decode(rawBody);
 					// 解析链接并处理protobuf数据
 					// 主机判断
