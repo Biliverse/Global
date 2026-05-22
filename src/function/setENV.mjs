@@ -1,7 +1,5 @@
-import * as getStorageModule from "@nsnanocat/util/getStorage.mjs";
-import { Console } from "@nsnanocat/util";
-
-const getStorage = getStorageModule.default ?? getStorageModule.getStorage;
+import getStorage from "@nsnanocat/util/getStorage.mjs";
+import { Console, Lodash as _ } from "@nsnanocat/util";
 
 /**
  * Set Environment Variables
