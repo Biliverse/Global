@@ -1,5 +1,6 @@
 ### 🆕 New Features
   * 新增 `评论区` 限制与可用性的修改
+  * 新增 `[储存] 配置类型 (Storage)` 选项，支持 `Argument` / `PersistentStore` / `database` 三种配置源
 
 ### 🛠️ Bug Fixes
   * 修复 grpc 响应头缺失的问题 by @VirgilClyne
@@ -12,6 +13,9 @@
     * 用户在未更新 `$persistentStore/$prefs (BoxJs)` 的情况下也不会影响新选项与功能的应用
     * 使用过 `$persistentStore/$prefs (BoxJs)` 不会再导致 `$argument` （`插件选项`与`模块参数`）的设置无效
   * 添加了 `@nsnanocat/grpc`
+  * 升级了 `@rspack/cli` 和 `@rspack/core` 至 `^1.7.6`
+  * 降级了 `node-polyfill-webpack-plugin` 至 `^4.0.0`
+  * 升级了 `@nsnanocat/util` 至 `^2.1.5`
 
 ### 🔄 Other Changes
   * 优化 `地区限制检测` 逻辑
