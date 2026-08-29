@@ -1,1 +1,1 @@
-# 🪐 BiliUniverse: 🌐 Global
+# 🪐 Biliverse: 🌐 Global
