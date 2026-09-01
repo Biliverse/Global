@@ -1,6 +1,3 @@
 [submodule "example"]
 	path = example
 	url = https://github.com/Biliverse/example.git
-[submodule "src/protobuf"]
-	path = src/protobuf
-	url = https://github.com/Biliverse/protobuf.git
