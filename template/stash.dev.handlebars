@@ -24,6 +24,10 @@ http:
     - "api.biliapi.net"
     - "grpc.biliapi.net"
   script:
+    - match: ^https:\/\/app\.bilibili\.com\/biliverse\/settings\/api\/Global(?:\?.*)?$
+      name: 📺 BiliBili.Global.request
+      type: request
+      require-body: true
     - match: ^https?:\/\/www\.bilibili\.com\/bangumi\/play\/(ss|ep)\d+\/?
       name: 📺 BiliBili.Global.request
       type: request

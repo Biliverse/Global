@@ -11,6 +11,7 @@
 #!arguments-desc = {{{argumentsDesc}}}
 
 [Script]
+📺 BiliBili.Global.Settings = type=http-request, pattern=^https:\/\/app\.bilibili\.com\/biliverse\/settings\/api\/Global(?:\?.*)?$, requires-body=1, max-size=65536, script-path=https://gist.githubusercontent.com/VirgilClyne/6b5c5164cc46cc9ac47f30b9824ec9b3/raw/request.dev.bundle.js, argument={{{scriptParams}}}
 📺 BiliBili.Global.bangumi.play.html = type=http-request, pattern=^https?:\/\/www\.bilibili\.com\/bangumi\/play\/(ss|ep)\d+\/?, ability=http-client-policy, script-path=https://gist.githubusercontent.com/VirgilClyne/6b5c5164cc46cc9ac47f30b9824ec9b3/raw/request.dev.bundle.js, argument={{{scriptParams}}}
 
 📺 BiliBili.Global.viewunite.v1.View.grpc = type=http-request, pattern=^https?:\/\/(grpc|app)\.bili(bili\.com|api\.net)\/bilibili\.app\.viewunite\.v1\.View\/View$, requires-body=1, binary-body-mode=1, engine=webview, ability=http-client-policy, script-path=https://gist.githubusercontent.com/VirgilClyne/6b5c5164cc46cc9ac47f30b9824ec9b3/raw/request.dev.bundle.js, argument={{{scriptParams}}}
