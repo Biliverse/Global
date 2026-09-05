@@ -16,6 +16,7 @@ version: "{{@package 'version'}}"
 
 http:
   mitm:
+    - "biliverse.github.io"
     - "www.bilibili.com"
     - "search.bilibili.com"
     - "app.bilibili.com"
@@ -24,7 +25,7 @@ http:
     - "api.biliapi.net"
     - "grpc.biliapi.net"
   script:
-    - match: ^https:\/\/app\.bilibili\.com\/biliverse\/settings\/api\/Global(?:\?.*)?$
+    - match: ^https:\/\/biliverse\.github\.io\/settings\/api\/Global(?:\?.*)?$
       name: 📺 BiliBili.Global.request
       type: request
       require-body: true
