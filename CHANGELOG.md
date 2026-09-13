@@ -1,5 +1,5 @@
 ### 🔄 Other Changes
-  * 移除重复的 PreferencePanes `web.js` 和 `/settings/**` 规则，仅保留 1.1.1 `api.js`；设置前端统一由 Enhanced 提供
+  * 移除全部 PreferencePanes `web.js`、`api.js` 和 `/settings/**` 规则，仅保留 Global 自身的 `/configs/Global`；通用前后端统一由 Enhanced 提供
 
 ### 🆕 New Features
   * 新增 `评论区` 限制与可用性的修改
