@@ -25,7 +25,7 @@ http:
     - "api.biliapi.net"
     - "grpc.biliapi.net"
   script:
-    - match: ^https:\/\/(?:biliverse\.github\.io|app\.bilibili\.com)\/configs\/Global(?:\?.*)?$
+    - match: ^https:\/\/(?:biliverse\.github\.io|app\.bilibili\.com)\/api\/Global(?:\?.*)?$
       name: PreferencePanes.Config.Global
       type: request
       require-body: false
