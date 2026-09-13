@@ -1,5 +1,5 @@
 ### 🔄 Other Changes
-  * 移除全部 PreferencePanes `web.js`、`api.js` 和 `/settings/**` 规则，仅保留 Global 自身的 `/configs/Global`；通用前后端统一由 Enhanced 提供
+  * 将 `HEAD/GET /api/Global` 直接 Mock 到同版 BoxJS；移除旧 `/configs/Global` 以及全部 PreferencePanes `web.js`、`api.js` 和 `/settings/**` 规则
 
 ### 🆕 New Features
   * 新增 `评论区` 限制与可用性的修改
