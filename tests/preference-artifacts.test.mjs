@@ -14,7 +14,7 @@ test("both release channels compile configuration responses from their own JSON 
 		await mkdir(path.join(root, "dist"));
 		process.chdir(root);
 		for (const suffix of ["", ".dev"]) {
-			const version = suffix ? "dev.candidate" : "0.8.25";
+			const version = suffix ? "dev.candidate" : "0.9.2";
 			process.env.BUILD_VERSION = version;
 			const json = [{ id: "@Root.Module.Settings.flag", name: suffix || "release", type: "boolean", val: true }];
 			await writeFile(`dist/BiliBili.Global${suffix}.boxjs.json`, JSON.stringify(json));
